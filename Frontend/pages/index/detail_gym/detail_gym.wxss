@@ -1,0 +1,178 @@
+.container {
+  height: auto;
+}
+
+.swiper_box {
+  width: 100vw;
+  height: 380rpx;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+
+.focus-event-info {
+  width: 100%;
+  height: auto;
+  line-height: 60rpx;
+  min-height: 250rpx;
+  background-color: white;
+}
+
+.focus-event-place-info {
+  width: 100%;
+  height: 50rpx;
+  padding-top: 26rpx;
+}
+
+.focus-event-place {
+  padding-left: 30rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333;
+  letter-spacing: 0.68rpx;
+}
+
+.focus-event-rating {
+  padding-left: 22rpx;
+  margin-top: 10rpx;
+  width: auto;
+}
+
+.rating-star-text {
+  margin-left: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #333;
+  letter-spacing: 0.56rpx;
+}
+
+.focus-count-comment {
+  float: right;
+  margin-right: 20rpx;
+  font-size: 26rpx;
+  color: #e6b53c;
+}
+
+.focus-event-date {
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-style: normal;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.focus-event-place-detail {
+  display: inline-block;
+  width: 80%;
+  height: auto;
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  color: #333;
+  word-break: break-all;
+  overflow: visible;
+}
+
+.comment-gym {
+  margin-top: 20rpx;
+  padding-bottom: 30rpx;
+  width: 100%;
+  height: auto;
+  padding-top: 20rpx;
+  background-color: white;
+}
+
+.comment-gym-label {
+  margin-left: 30rpx;
+  border-left: solid 8rpx #e6b53c;
+  padding-left: 20rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+}
+.comment-gym-text {
+  padding-top: 20rpx;
+  padding-right: 40rpx;
+  word-break: break-all;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 1.04rpx;
+  line-height: 50rpx;
+}
+
+.comment-service {
+  margin-top: 20rpx;
+  padding-bottom: 30rpx;
+  width: 100%;
+  height: auto;
+  padding-top: 20rpx;
+  background-color: white;
+}
+
+.comment-service-label {
+  margin-left: 30rpx;
+  border-left: solid 8rpx #e6b53c;
+  padding-left: 20rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+}
+
+.comment-service-text {
+  margin-top: 20rpx;
+  margin-right: 40rpx;
+  word-break: break-all;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 1.04rpx;
+  line-height: 50rpx;
+}
+
+.gym_events {
+  margin-top: 20rpx;
+  width: 100%;
+  height: auto;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background-color: white;
+}
+
+.gym-events-label {
+  margin-left: 30rpx;
+  border-left: solid 8rpx #e6b53c;
+  padding-left: 20rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+}
+.focus-event-favor{
+  float: right;
+  margin-top: 15rpx;
+  width: 42rpx;
+  height: 40rpx;
+  margin-right: 30rpx;
+}
+.detail-addr{
+  width: 85%; 
+  display: inline-block; 
+  margin-left: 3rpx;
+}
+.copy-comment{
+  height: 300rpx;
+  padding-left: 30rpx;
+  word-break: break-all;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 1.04rpx;
+  line-height: 50rpx;
+}
+@import "../../profile/template/stadium_template.wxss"

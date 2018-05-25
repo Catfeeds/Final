@@ -1,0 +1,110 @@
+
+.container{
+  height: auto;
+  background-color: white;
+}
+.product-image {
+  width: 100%;
+  height: 380rpx;
+}
+
+.product-detail {
+  width: auto;
+  height: 150rpx;
+  background-color: white;
+  padding-left: 30rpx;
+}
+
+.product-name {
+  padding-top: 26rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333;
+  letter-spacing: 0.68rpx;
+}
+
+.prodcut-cost {
+  margin-top: 21rpx;
+  line-height: 32rpx;
+}
+
+.product-cost-image {
+  width: 27rpx;
+  height: 32rpx;
+  vertical-align: middle;
+}
+
+.product-cost-text {
+  margin-left: 12rpx;
+  display: inline-block;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #333;
+  letter-spacing: 0.28rpx;
+  vertical-align: middle;
+}
+
+.prodcut-cost-text text {
+  vertical-align: middle;
+}
+
+.product-type {
+  display: inline-block;
+  float: right;
+  margin-right: 31rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 26rpx;
+  color: #888;
+  letter-spacing: 0.56rpx;
+}
+
+.product-explain {
+  padding-left: 30rpx;
+  border-top: 20rpx solid #f4f4f4;
+  margin-top: 20rpx;
+  margin-bottom: 98rpx;
+  width: auto;
+  height: auto;
+  background-color: white;
+}
+
+.product-explain-header {
+  width: 100%;
+  height: 40rpx;
+  padding-top: 23rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+}
+
+.product-explain-header text {
+  border-left: solid 8rpx #e6b53c;
+  padding-left: 12rpx;
+}
+
+.product-explain-view {
+  margin-top: 14rpx;
+  margin-right: 37rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 1.04rpx;
+  line-height: 50rpx;
+  word-break: break-all;
+}
+
+.btn_submit {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  background-color: #e6b53c;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: 1.54rpx;
+}
+
+@import "/wxParse/wxParse.wxss"

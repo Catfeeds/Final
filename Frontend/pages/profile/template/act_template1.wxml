@@ -1,0 +1,28 @@
+<template name="act-template">
+  <view class="activity">
+    <view id="{{item.phonenumber}}" bindtap="click_detail_event">
+      <view class="activity-bar">
+        <text class="activity-no">订单编号：</text>
+        <text>{{item.phonenumber}}</text>
+        <text class="activity-status">{{item.status}}</text>
+      </view>
+      <view class="activity-detail">
+        <image class="activity-picture" src="../../../image/temp.jpg"></image>
+        <view class='activity-role'>
+          <text class='activity-name'>{{item.kind}}</text>
+          <text class="activity-role-text">{{item.user}}</text>
+        </view>
+        <view class="activity-content">
+          <image class="activity-type" src="../../../image/my_bee_category@2x.png"></image>
+          <text class="activity-type-text">{{item.match}}</text>
+          <image class="activity-limit" src="../../../image/my_bee_number@2x.png"></image>
+          <text class="activity-limit-text">{{item.membernum}}人</text>
+          <image class="activity-cost" src="../../../image/my_bee_m@2x.png"></image>
+          <text class="activity-cost-text">{{item.cost}}元/人</text>
+        </view>
+        <text class="activity-time">时间 | {{item.date}}</text>
+        <text class="activity-address">地址 | {{item.place}}</text>
+      </view>
+    </view>
+  </view>
+</template>

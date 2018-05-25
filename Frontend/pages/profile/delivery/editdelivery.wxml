@@ -1,0 +1,36 @@
+<view class='container'>
+  <view class='postname-view'>
+    <text class='postname-text'>*姓名：</text>
+    <input class='postname-input' bindblur='on_blur_postname' placeholder='请输入姓名' value="{{address.name}}" />
+  </view>
+  <view class='phonenumber-view'>
+    <text class='phonenumber-text'>*联系方式:</text>
+    <input class='phonenumber-input' type='number' bindblur='on_blur_phonenumber' placeholder='请输入电话号码' value="{{address.phone}}" />
+  </view>
+  <view class='event-view' style="height: auto; line-height: 88rpx;" bindtap="On_clicked_address" wx:if="{{method == 'change' && select_address == '0'}}">
+    <text class='stadiumaddress-text'>*收货地址:</text>
+    <view class='stadiumaddress-input'>{{address.province}}{{address.city}}{{address.area}}{{address.detail_address}}</view>
+  </view>
+  <view  wx:if="{{method == 'new' || select_address == '1'}}">
+    <view class='event-view' style="height: auto; line-height: 88rpx;">
+      <text class='stadiumaddress-text'>*收货地址:</text>
+      <view class='stadiumaddress-input'>
+        <picker bindchange="bindprovincechange" value="{{select_province}}" range-key="province" range="{{province}}">
+          {{province[select_province].province}}
+        </picker>
+        <picker bindchange="bindcitychange" value="{{select_city}}" range-key="city" range="{{city}}">
+          {{city[select_city].city}}
+        </picker>
+        <picker bindchange="bindareachange" value="{{select_area}}" range-key="area" range="{{area}}">
+          {{area[select_area].area}}
+        </picker>
+      </view>
+    </view>
+    <input class="detail-address" placeholder='请输入详细地址'  bindblur='on_blur_address' />
+  </view>
+  <view class='mail-view'>
+    <text class='mail-text'>*邮政编码：</text>
+    <input class='mail-input' type="number" bindblur='on_blur_mail' placeholder='请输入邮政编码' value="{{address.email}}" />
+  </view>
+  <button class='submit_btn' bindtap='on_click_submit'>保存</button>
+</view>

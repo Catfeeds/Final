@@ -1,0 +1,91 @@
+.activity {
+  margin-top: 20rpx;
+  padding-bottom: 5rpx;
+  background-color: white;
+  width: 100%;
+  height: auto;
+  font-family: "PingFangSC";
+}
+
+.activity-detail {
+  height: auto;
+  border-bottom: solid 3rpx #f4f4f4;
+  padding-top: 20rpx;
+  padding-left: 30rpx;
+}
+.event-status {
+  padding-top: 5rpx;
+  float:right;
+  margin-right: 30rpx;
+  color: #333333;
+  font-size: 26rpx;
+  font-style: bold;
+  letter-spacing: 0.56rpx;
+}
+
+.activity-picture {
+  float: left;
+  width: 100rpx;
+  height: 100rpx;
+}
+.activity-role{
+  margin-left: 20rpx;
+  display: inline;
+}
+.activity-name {
+  font-size: 32rpx;
+  font-style: bold;
+}
+
+
+.activity-content {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  margin-left: 120rpx;
+  font-family: "PingFangSC-Regular";
+}
+
+.activity-content image {
+  vertical-align: bottom;
+  margin-right: 10rpx;
+}
+
+.activity-type {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.activity-limit {
+  width: 34rpx;
+  height: 34rpx;
+  padding-left: 30rpx;
+}
+
+.activity-cost {
+  width: 32rpx;
+  height: 36rpx;
+  padding-left: 30rpx;
+}
+
+.activity-time {
+  margin-top: 30rpx;
+  display: block;
+  font-size: 26rpx;
+  font-family: "PingFangSC-Regular";
+}
+
+.activity-address {
+  float: left;
+  width: 10%;
+  display: inline-block;
+  font-size: 26rpx;
+  font-family: "PingFangSC-Regular";
+}
+
+.activity-address1 {
+  vertical-align: top;
+  display: inline-block;
+  width: 70%;
+  font-size: 26rpx;
+  font-family: "PingFangSC-Regular";
+}

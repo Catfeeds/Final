@@ -1,0 +1,124 @@
+/**index.wxss**/
+.userinfo {
+  position: absolute;
+  width: 100%;
+  height: 220rpx;
+  top: 0rpx;
+  left: 0rpx;
+  background-color: white;
+}
+
+.userinfo-avatar {
+  position: absolute;
+  width: 152rpx;
+  height: 152rpx;
+  top: 34rpx;
+  left: 29rpx;
+  border-radius: 50%;
+  border-width: 1rpx;
+}
+
+.userinfo-nickname {
+  position: absolute;
+  left: 200rpx;
+  top: 88rpx;
+  font-size: 32rpx;
+  color: #333333;
+}
+
+.list {
+  position: absolute;
+  left: 0;
+  top: 240rpx;
+  width: 100%;
+  height: 626rpx;
+  background-color: #F4F4F4;
+}
+
+.list-item {
+  position: relative;
+  margin-top: 1rpx;
+  left: 0;
+  width: 100%;
+  height: 88rpx;
+  background-color: white;
+}
+
+.setting-icon1{
+  position:absolute;
+  left:30rpx;
+  margin-top:22rpx;
+  width:46rpx;
+  height:44rpx;
+}
+
+.setting-icon2{
+  position:absolute;
+  left:30rpx;
+  margin-top:24rpx;
+  width:41rpx;
+  height:42rpx;
+}
+
+.setting-icon3{
+  position:absolute;
+  left:30rpx;
+  margin-top:24rpx;
+  width:42rpx;
+  height:40rpx;
+}
+
+.setting-icon4{
+  position:absolute;
+  left:28rpx;
+  margin-top:24rpx;
+  width:45rpx;
+  height:38rpx;
+}
+
+.setting-icon5{
+  position:absolute;
+  left:30rpx;
+  margin-top:27rpx;
+  width:42rpx;
+  height:34rpx;
+}
+
+.setting-icon6{
+  position:absolute;
+  left:30rpx;
+  margin-top:28rpx;
+  width:42rpx;
+  height:32rpx;
+}
+
+.setting-icon7{
+  position:absolute;
+  left:32rpx;
+  margin-top:22rpx;
+  width:38rpx;
+  height:40rpx;
+}
+
+.list-item-label {
+  position: absolute;
+  top: 23rpx;
+  left: 89rpx;
+  font-size: 30rpx;
+}
+
+.symbol {
+  position: absolute;
+  top: 30rpx;
+  left: 705rpx;
+  width: 15rpx;
+  height: 26rpx;
+}
+
+.vip-symbol{
+  position: relative;
+  margin-top:0;
+  padding-left:9rpx;
+  width: 39.1rpx;
+  height: 33rpx;
+}

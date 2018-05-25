@@ -1,0 +1,92 @@
+/**index.wxss**/
+
+.reg_cls_user_comment_info {
+  width: 100%;
+  height: auto;
+  border-bottom: solid 3rpx #f4f4f4;
+}
+
+.reg_cls_user_photo {
+  margin-top: 20rpx;
+  float: left;
+  margin-left: 30rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border: solid 1rpx #f4f4f4;
+  border-radius: 50%;
+}
+
+.reg_cls_city_name {
+  margin-left: 20rpx;
+  width: auto;
+  height: auto;
+  font-family: PingFangSC-Semibold;
+  font-size: 26rpx;
+  color: #333;
+  letter-spacing: 1.8rpx;
+}
+
+.reg_member_place {
+  margin-top: 10rpx;
+  margin-left: 130rpx;
+  width: 50%;
+  height: auto;
+  font-family: PingFangSC-Semibold;
+  font-size: 24rpx;
+  color: #333333;
+  letter-spacing: 0.5rpx;
+}
+.reg-member-txt{
+  width: 20%;
+  vertical-align: top;
+  display: inline-block;
+}
+.reg-member-add{
+  width: 80%;
+  display: inline-block;
+  word-break: break-all;
+}
+.reg_member_detail {
+  margin-top: 0rpx;
+}
+
+.reg_cls_comment_number {
+  margin-top: 10rpx;
+  margin-left: 130rpx;
+  width: auto;
+  height: auto;
+  font-family: PingFangSC-Semibold;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.reg_cls_clear_btn {
+  float: right;
+  margin-right: 30rpx;
+  width: auto;
+  height: auto;
+  transform: translate(0, -80rpx);
+  background-color: #e6b53c;
+  font-family: PingFangSC-Semibold;
+  font-size: 24rpx;
+  color: white;
+  letter-spacing: 1.8rpx;
+}
+
+.no-focus-image {
+  position: absolute;
+  top: 168rpx;
+  right: 285rpx;
+  width: 180rpx;
+  height: 199rpx;
+}
+
+.no-focus-text {
+  position: absolute;
+  top: 430rpx;
+  left: 257rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333;
+  letter-spacing: 1.54rpx;
+}

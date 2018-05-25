@@ -1,0 +1,259 @@
+/* pages/profile/my_focus/detail_event.wxss */
+
+/**index.wxss**/
+
+.container {
+  height: auto;
+}
+
+.personal-img-wrapper {
+  width: 100%;
+  height: 380rpx;
+}
+
+.personal-event-img {
+  width: 100%;
+  height: 380rpx;
+}
+
+.event-info {
+  width: 100%;
+  height: 250rpx;
+  background-color: white;
+}
+
+.event-type-info {
+  width: calc(100%-26rpx);
+  height: 50rpx;
+  padding-top: 26rpx;
+}
+
+.event-type {
+  padding-left: 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  letter-spacing: 0.68rpx;
+}
+
+.event-status {
+  float: right;
+  margin-right: 30rpx;
+  color: #888;
+  font-size: 26rpx;
+  letter-spacing: 0.56rpx;
+}
+
+.detail-info {
+  margin-top: 5rpx;
+  padding-left: 30rpx;
+  height: 37rpx;
+  width: auto;
+}
+
+.detail-info image:nth-child(1) {
+  width: 32rpx;
+  height: 32rpx;
+  vertical-align: middle;
+}
+
+.detail-info text:nth-child(2) {
+  padding-left: 9rpx;
+  font-size: 26rpx;
+  vertical-align: top;
+}
+
+.detail-info image:nth-child(3) {
+  vertical-align: middle;
+  padding-left: 20rpx;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.detail-info text:nth-child(4) {
+  padding-left: 9rpx;
+  font-size: 26rpx;
+  width: 57rpx;
+  height: 37rpx;
+}
+
+.detail-info image:nth-child(5) {
+  vertical-align: middle;
+  padding-left: 20rpx;
+  left: 287rpx;
+  width: 32rpx;
+  height: 36rpx;
+}
+
+.detail-info text:nth-child(6) {
+  padding-left: 9rpx;
+  font-size: 26rpx;
+  width: 57rpx;
+  height: 37rpx;
+}
+
+.favor_star {
+  position: absolute;
+  right: 51.1rpx;
+  top: 474.1rpx;
+  width: 37.8rpx;
+  height: 30.8rpx;
+}
+
+.act_date {
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+}
+
+.favor_text {
+  position: absolute;
+  top: 507rpx;
+  right: 50rpx;
+  font-size: 22rpx;
+  color: #472e00;
+  font-family: PingFangSC-Regular;
+  font-size: 22rpx;
+  color: #472e00;
+  letter-spacing: 0.47rpx;
+}
+
+.temp-fonts {
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.place-info {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  height: 264rpx;
+  width: calc(100%-40rpx);
+  background-color: white;
+}
+
+.place-info-view {
+  height: 88rpx;
+  margin-left: 30rpx;
+}
+
+.place-info-text {
+  padding-top: 23rpx;
+  color: #333;
+  font-size: 30rpx;
+}
+
+.introduce {
+  margin-top: 20rpx;
+  width: (100% - 20rpx);
+  height: auto;
+  background-color: white;
+}
+
+.introduce-view {
+  padding-top: 23rpx;
+  height: 88rpx;
+  margin-left: 30rpx;
+}
+
+.introduce-border {
+  margin-left: 10rpx;
+  border-left: 6rpx solid #e6b53c;
+  padding-left: 12rpx;
+  font-size: 30rpx;
+}
+
+.introduce-detail {
+  background-color: white;
+  word-break: break-all;
+  padding: 19rpx 37rpx 31rpx 30rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 1.04rpx;
+  line-height: 50rpx;
+}
+
+.member_detail {
+  margin-top: 20rpx;
+  background-color: white;
+  width: 100%;
+}
+
+.view_more_detail {
+  margin-top: 10rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 26rpx;
+  color: #e6b53c;
+  letter-spacing: 0.56px;
+  float: right;
+  margin-right: 17rpx;
+}
+
+.applicant-view {
+  width: 100%;
+  height: auto;
+  margin-top: 20rpx;
+  background-color: white;
+}
+
+.applicant-title {
+  width: clac(100%-30rpx);
+  margin-left: 30rpx;
+  padding-top: 20rpx;
+}
+
+.applicant-title-text {
+  border-left: 6rpx solid #e6b53c;
+  padding-left: 12rpx;
+  font-size: 30rpx;
+}
+
+.applicant-each-view {
+  display: inline-block;
+  width: 200rpx;
+  height: 150rpx;
+  margin-top: 30rpx;
+  margin-left: 30rpx;
+}
+
+.applicant-image {
+  display: block;
+  margin-left: 20rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.applicant-name {
+  margin-left: 10rpx;
+  width: 200rpx;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.btn-footer {
+  width: 100%;
+  height: 98rpx;
+  margin-bottom: 0rpx;
+  font-family: PingFangSC-Semibold;
+  letter-spacing: 1.63rpx;
+}
+
+.btn-gym-info {
+  display: inline-block;
+  width: 50%;
+  height: 98rpx;
+  background-color: white;
+  font-size: 34rpx;
+  color: #e6b53c;
+}
+
+.btn-final-participate {
+  display: inline-block;
+  width: 100%;
+  height: 98rpx;
+  background-color: #e6b53c;
+  font-size: 34rpx;
+  color: white;
+}

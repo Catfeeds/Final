@@ -1,0 +1,57 @@
+<import src="../../profile/template/stadium_template.wxml" />
+<view class='container'>
+  <view>
+    <swiper class="swiper_box" indicator-dots="true" autoplay="true" interval="3000" duration="300">
+      <block wx:for="{{pictures}}" wx:key="index">
+        <swiper-item>
+          <image class="slide-image" mode="aspectFill" src="{{item}}" id="{{index}}" bindtap="show_preview" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="focus-event-info">
+    <view class="focus-event-place-info">
+      <text class="focus-event-place" style="font-weight: bold;">{{site.site_name}}</text>
+    </view>
+    <view class='focus-event-rating'>
+      <view wx:for="{{starparam.stars}}" style='display: inline;' wx:key="star">
+        <image class="star-image" style="margin-left: 10rpx; padding-top: 20rpx; width:26rpx; height:26rpx " src="{{item-(starparam.score-1) <= 0 ? starparam.srcImage_4 : (item-(starparam.score-1) >= 1 ? starparam.srcImage_0 :(item-(starparam.score-1) < 0.5 ? starparam.srcImage_3 : (item-(starparam.score-1) == 0.5 ? starparam.srcImage_2 : starparam.srcImage_1)))}}">
+        </image>
+      </view>
+      <text class='rating-star-text'>{{starparam.score}}分</text>
+      <text class='focus-count-comment' bindtap="on_Clicked_Comment" id="{{site.boss_id}}">{{site.rating_amount}}条评论》</text>
+    </view>
+    <view>
+      <view class="focus-event-date">电话 | <text bindtap='phone_call' style="text-decoration: underline; color: blue;">{{site.phone}}</text></view>
+    </view>
+    <view>
+      <view class="focus-event-place-detail">
+        <view style='widht: 10%; float: left; display: inline-block;'>地址 | </view>
+        <view class="detail-addr"><text selectable='true'>{{site.province+site.city+site.area+site.detail_address}}</text></view>
+      </view>
+      <image class="focus-event-favor" bindtap="on_click_favourite" src='{{favourite_image[site.fav_state]}}'></image>
+    </view>
+  </view>
+  <view class='comment-gym'>
+    <view class='comment-gym-label'>
+      <text style="font-weight: bold;">场馆介绍</text>
+    </view>
+    <view style="padding-left: 30rpx; padding-right:30rpx;">
+      <text selectable = "true" class='comment-gym-text'>{{site.site_introduction!=null?site.site_introduction:''}}</text>
+    </view>
+  </view>
+
+  <view class='comment-service'>
+    <view class='comment-service-label' style="font-weight: bold;">服务介绍</view>
+    <view style="padding-left: 30rpx; padding-right:30rpx;">
+      <text class='comment-service-text' selectable='true'>{{site.site_service!=null?site.site_service:''}}</text>
+    </view>
+  </view>
+
+  <view class='gym_events'>
+    <view class='gym-events-label' style="font-weight: bold;">场馆活动（共{{event.length}}场）</view>
+    <view wx:for="{{event}}" wx:key="event_index">
+      <template is="stadium-template" data="{{item, eventType, userRole, eventState}}" />
+    </view>
+  </view>
+</view>

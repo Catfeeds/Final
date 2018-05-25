@@ -1,0 +1,17 @@
+<!--pages/profile/my_member_ship/my_member_ship.wxml-->
+<view class='user-info'>
+  <image class='user-info-bkimage' src='../../../image/card.png'></image>
+  <image class='user-info-image' src="{{userInfo.avatar}}"></image>
+  <text class='user-info-place' style="font-weight: bold;">{{name}}</text>
+  <image wx:if="{{state==1}}" class='user-is-vip' src='../../../image/card_vip@2x.png'></image>
+  <text wx:if="{{state==1}}" class='user-info-term'>{{expire_time}}到期</text>
+  <text class='user-info-cost'>会员资费：{{cost}}元/月</text>
+  <text class='user-info-ok' bindtap='pay'>{{btn_text[state]}}</text>
+</view>
+<view class="member-treatment">
+  <view class='alert-text' style="font-weight: bold;">会员福利：</view>
+  <view>1、角色类型为个人的会员发布活动时不需要消耗蜂</view>
+  <view style="margin-top: 0rpx; margin-bottom: 0rpx;">蜜即可在活动结束后在地图上显示。</view>
+  <view>2、会员在地图上采蜜时的距离时非会员的2倍。</view>
+  <view>3、会员在后花园蜂蜜的储值量是非会员的2倍。</view>
+</view>

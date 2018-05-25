@@ -1,0 +1,114 @@
+.map_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.bee-map {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.news-image {
+  position: absolute;
+  z-index: 9;
+  left: 30rpx;
+  top: 14rpx;
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.news-new-count{
+  position: absolute;
+  z-index: 10;
+  left: 70rpx;
+  top: 20rpx;
+  width: 30rpx;
+  line-height: 30rpx;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 20rpx;
+}
+
+.search-box {
+  position: absolute;
+  z-index: 10;
+  top: 14rpx;
+  left: 128rpx;
+  width: 480rpx;
+  line-height: 60rpx;
+  opacity: 0.8;
+  background: #fff;
+  border-radius: 6rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #888;
+  letter-spacing: -0.22rpx;
+}
+
+.inner-box {
+  margin-left: 25rpx;
+  width: 100%;
+  line-height: 60rpx;
+}
+
+.search-icon {
+  position: absolute;
+  z-index: 10;
+  width: 31rpx;
+  height: 31rpx;
+  top: 27rpx;
+  left: 565rpx;
+}
+
+.cur-sel-kind {
+  position: absolute;
+  z-index: 10rpx;
+  top: 14rpx;
+  left: 652rpx;
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.sport-kind-bar {
+  position: absolute;
+  z-index: 10;
+  top: 25rpx;
+  left: 648rpx;
+  width: 76rpx;
+  height: 1000rpx;
+  padding-top: 31rpx;
+  border-radius: 38rpx;
+  background-color: white;
+  box-shadow: 0 0 4rpx 0 rgba(0, 0, 0, 0.27);
+  transition: height 2s;
+}
+
+.bar-item {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0rpx auto 20rpx auto;
+}
+
+.bar-updown {
+  width: 60rpx;
+  height: 30rpx;
+  color: #888;
+  margin: 0rpx auto 10rpx auto;
+}
+
+.bar-item-sel {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0rpx auto 20rpx auto;
+  padding-bottom: 10rpx;
+  border-bottom: 3rpx solid #999999;
+}

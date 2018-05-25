@@ -1,0 +1,87 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/detail_gym/detail_gym",
+    "pages/index/detail_event/detail_event",
+    "pages/index/personal_input/personal_input",
+    "pages/index/search/search",
+    "pages/index/news/news",
+    "pages/logs/logs",
+    "pages/profile/profile",
+    "pages/profile/my_booking/booking",
+    "pages/profile/my_booking/booking_detail",
+    "pages/profile/final_cancel/final_cancel",
+    "pages/profile/my_activity/my_activity",
+    "pages/profile/my_activity/eventdetail",
+    "pages/profile/my_activity/showmember",
+    "pages/profile/my_purse/my_purse",
+    "pages/profile/my_purse/trans_detail/trans_detail",
+    "pages/profile/my_purse/add_New_Account/add_New_Account",
+    "pages/profile/my_membership/my_membership",
+    "pages/profile/my_focus/my_focus",
+    "pages/profile/auth/auth",
+    "pages/profile/delivery/delivery",
+    "pages/profile/delivery/editdelivery",
+    "pages/profile/register_stadium/register_stadium",
+    "pages/activity/activity",
+    "pages/backyard/backyard",
+    "pages/backyard/mainbeeshop/mainbeeshop",
+    "pages/backyard/product_detail/product_detail",
+    "pages/backyard/product_order/product_order",
+    "pages/backyard/transaction/transaction",
+    "pages/backyard/transaction_detail/transaction_detail",
+    "pages/backyard/ordercomplete/ordercomplete",
+    "pages/backyard/help/help",
+    "pages/other/evaluation/evaluation",
+    "pages/other/comment/comment",
+    "pages/other/create_event/create_event",
+    "pages/other/create_event/createfirst",
+    "pages/profile/auth/auth-text/auth_text",
+    "pages/index/detail_event/detail_event1",
+    "pages/test/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "蜂去吧",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#FBFBFB",
+    "borderStyle": "white",
+    "color": "#888888",
+    "selectedColor": "#472e00",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "蜂巢",
+        "iconPath": "image/Home_n@2x.png",
+        "selectedIconPath": "image/Home_s@2x.png"
+      },
+      {
+        "pagePath": "pages/activity/activity",
+        "text": "活动",
+        "iconPath": "image/activity_n@2x.png",
+        "selectedIconPath": "image/activity_s@2x.png"
+      },
+      {
+        "pagePath": "pages/other/create_event/createfirst",
+        "text": "发布",
+        "iconPath": "image/add@2x.png",
+        "selectedIconPath": "image/add@2x.png"
+      },
+      {
+        "pagePath": "pages/backyard/backyard",
+        "text": "后花园",
+        "iconPath": "image/garden_n@2x.png",
+        "selectedIconPath": "image/garden_s@2x.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "image/my_n@2x.png",
+        "selectedIconPath": "image/my_s@2x.png"
+      }
+    ]
+  }
+}

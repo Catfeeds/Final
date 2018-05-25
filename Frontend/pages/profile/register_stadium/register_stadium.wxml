@@ -1,0 +1,36 @@
+<view class='container'>
+  <view class='stadium-avatar-view' bindtap='on_click_selectavatar'>
+    <view class='stadium-avatar-text'>*场馆图标：</view>
+    <image class='stadium-image-next' mode="aspectFill" src='../../../image/next@2x.png' />
+    <image class='stadium-avatar-image' mode="aspectFill" src='{{icon_path}}' />
+  </view>
+  <view class='stadium-input-view'>
+    <view class='stadium-input-text'>*场馆介绍：</view>
+    <textarea class='stadium-input-textarea' maxlength='500' placeholder='请输入场馆简介，不超过500字' bindblur='blur_on_introduction' value="{{introduction}}">
+    </textarea>
+  </view>
+  <view class='stadium-input-view'>
+    <view class='stadium-input-text'>*服务介绍：</view>
+    <textarea class='stadium-input-textarea' maxlength='500' placeholder='请输入场馆简介，不超过500字' bindblur='blur_on_service' value="{{service}}">
+    </textarea>
+  </view>
+  <view class='stadium-images-view'>
+    <view class='stadium-images-text'>*场馆图片(最多上传5张)：</view>
+    <image class='stadium-images-image' id="0" mode="aspectFill" src='{{(image_path[0]=="")?"../../../image/shop_license.png":image_path[0]}}' bindtap='on_click_image'>
+    </image>
+    <image class='stadium-images-delete' id="0" mode="aspectFill" src="../../../image/del02@2x.png" style="{{display[select[1]]}}" bindtap="on_click_delete"></image>
+    <image class='stadium-images-image' id="1" mode="aspectFill" src='{{(image_path[1]=="")?"../../../image/shop_license.png":image_path[1]}}' style="{{display[select[1]]}}" bindtap='on_click_image'>
+    </image>
+    <image class='stadium-images-delete' id="1" mode="aspectFill" src="../../../image/del02@2x.png" style='{{display[select[2]]}}' bindtap="on_click_delete"></image>
+    <image class='stadium-images-image' id="2" mode="aspectFill" src='{{(image_path[2]=="")?"../../../image/shop_license.png":image_path[2]}}' style="{{display[select[2]]}}" bindtap='on_click_image'>
+    </image>
+    <image class='stadium-images-delete' id="2" mode="aspectFill" src="../../../image/del02@2x.png" style='{{display[select[3]]}}' bindtap="on_click_delete"></image>
+    <image class='stadium-images-image' id="3" mode="aspectFill" src='{{(image_path[3]=="")?"../../../image/shop_license.png":image_path[3]}}' style="{{display[select[3]]}}" bindtap='on_click_image'>
+    </image>
+    <image class='stadium-images-delete' id="3" mode="aspectFill" src="../../../image/del02@2x.png" style='{{display[select[4]]}}' bindtap="on_click_delete"></image>
+    <image class='stadium-images-image' id="4" mode="aspectFill" src='{{(image_path[4]=="")?"../../../image/shop_license.png":image_path[4]}}' style="{{display[select[4]]}}" bindtap='on_click_image'>
+    </image>
+    <image wx:if="{{selected==5}}" class='stadium-images-delete1' id="4" mode="aspectFill" src="../../../image/del02@2x.png" bindtap="on_click_delete"></image>
+  </view>
+  <button class='btn-submit' bindtap="on_click_save">完成</button>
+</view>

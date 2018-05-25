@@ -1,0 +1,19 @@
+<view>
+  <view class="reg_member_view">
+    <view class="reg_cls_title">
+      <text class="reg_cls_all_comments" style="font-weight: bold;">报名成员（{{booking.length}}人)</text>
+    </view>
+  </view>
+    <view class="reg_cls_user_comment_info" wx:for="{{booking}}" wx:item="item" wx:key="index">
+      <image class="reg_cls_user_photo" src="{{item.avatar}}" mode="aspectFill"> </image>
+      <view>
+        <text class="reg_cls_user_name" style="font-weight: bold;">{{item.name}}</text>
+        <text class="reg_member_status" wx:if="{{item.pay_type==1}}">{{pay_content[item.pay_type]}}</text>
+        <text class="reg_member_status" wx:else style="color: #E65A3C">{{pay_content[item.pay_type]}}</text>
+      </view>
+      <view class='reg_member_detail'>
+        <text class="reg_cls_comment_number" id="{{index}}" bindtap="phone_call" style="text-decoration: underline; color: blue;">{{item.phone}}</text>
+        <text class="reg_cls_comment_content">共{{item.reg_num}}人，合计{{item.cost*item.reg_num}}元</text>
+      </view>
+    </view>
+</view>

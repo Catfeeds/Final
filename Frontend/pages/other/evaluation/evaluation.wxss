@@ -1,0 +1,77 @@
+/**index.wxss**/
+
+.cls_score_title_bar {
+  border-top: 20rpx solid #f4f4f4;
+  border-bottom: 20rpx solid #f4f4f4; 
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 100%;
+  height: 88rpx;
+}
+
+.cls_score_title {
+  position: absolute;
+  left: 30rpx;
+  top: 23rpx;
+  width: auto;
+  height: auto;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.cls_score_star {
+  position: absolute;
+  top: 26rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.cls_score_text_area_bound {
+  position: absolute;
+  left: 30rpx;
+  top: 29rpx;
+  width: auto;
+  height: auto;
+  min-height: 100rpx;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.cls_score_text_area {
+  position: absolute;
+  top: 158rpx;
+  left: 30rpx;
+  background-color: #f4f4f4;
+  width: 690rpx;
+  height: 320rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+
+.cls_text_count {
+  position: absolute;
+  right: 40rpx;
+  top: 498rpx;
+  width: auto;
+  height: auto;
+  font-family: PingFangSC-Semibold;
+  font-size: 28rpx;
+  color: #888;
+}
+
+.btn_add_comment {
+  border-radius: none;
+  position: fixed;
+  bottom: 0rpx;
+  width: 100%;
+  line-height: 98rpx;
+  text-align: center;
+  padding-top: 7rpx;
+  background-color: #e6b53c;
+  font-family: PingFangSC-Semibold;
+  font-size:30rpx;
+  color: #fff;
+}

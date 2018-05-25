@@ -1,0 +1,57 @@
+<!-- User Activity Detail Viewer -->
+<view class="container">
+  <view class="personal-img-wrapper">
+    <image class="personal-event-img" src="{{eventData['ground_image']}}" />
+  </view>
+  <view class="event-info">
+    <view class="event-type-info">
+      <text class="event-type">{{eventData['act_type']}}</text>
+      <text class="event-status">{{eventData['act_status']}}</text>
+    </view>
+    <view class='detail-info'>
+      <image src='../../../image/my_bee_category@2x.png'></image>
+      <text>{{eventData['act_name']}}</text>
+      <image src='../../../image/my_bee_number@2x.png'></image>
+      <text>{{eventData['member_count']}}人</text>
+      <image src='../../../image/my_bee_m@2x.png'></image>
+      <text>{{eventData['cost']}}元/人</text>
+    </view>
+    <image class="favor_star" bindtap="btn_Clicked_Favor" src='{{favor_src}}'>asdf</image>
+    <text class='favor_text'>{{favour_num}}</text>
+    <view class="act_date">
+      <view>时间 | {{eventData['act_date']}}</view>
+    </view>
+    <view class="temp-fonts">地址 |{{eventData['ground_name']}}</view>
+  </view>
+  <view class='place-info'>
+    <view class='place-info-view'>
+      <text class='place-info-text'>场馆名称：{{eventData['ground_name']}}</text>
+    </view>
+    <view class='place-info-view'>
+      <text class='place-info-text'>馆主姓名：{{eventData['ground_owner']}}</text>
+    </view>
+    <view class='place-info-view'>
+      <text class='place-info-text'>人数上限：不超过{{eventData['max_member']}}人</text>
+    </view>
+  </view>
+  <view class='introduce'>
+    <view class='introduce-view'>
+      <text class='introduce-border'>活动简介</text>
+    </view>
+    <view style='width: 100%;'>
+      <view class='introduce-detail'>{{eventData['act_intro']}}</view>
+    </view>
+  </view>
+  <view class='applicant-view'>
+    <view class='applicant-title'>
+      <text class='applicant-title-text'>已报名人（{{eventData.member_count}}人）</text>
+    </view>
+    <view class='applicant-each-view' wx:for="{{image_array}}">
+      <image class="applicant-image" src="{{item}}"></image>
+      <text class='applicant-name'>asdfal;skdjf</text>
+    </view>
+  </view>
+  <view class='btn-footer'>
+  <button bindtap="btn_Clicked_Personal_Input" disabled="{{is_disabled}}" class='btn-final-participate'>{{btn_text}}</button>
+  </view>
+</view>

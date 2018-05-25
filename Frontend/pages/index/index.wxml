@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="map_container" >
+    <map class="bee-map" id="mymap" longitude="{{current_longitude}}" latitude="{{current_latitude}}" scale="13" show-location="false" markers="{{markers}}" bindmarkertap="on_Click_maker">
+      <!--Top Items-->
+      <cover-image class="news-image" bindtap="on_click_news" src="../../image/inf@2x.png"></cover-image>
+      <cover-view wx:if="{{newscount != 0}}" class='news-new-count'>{{newscount}}</cover-view>
+      <cover-view class="search-box" bindtap="on_click_search">
+        <cover-view class="inner-box">输入地址</cover-view>
+      </cover-view>
+      <cover-image class="search-icon" src="../../image/search@2x.png"></cover-image>
+      <cover-image class="cur-sel-kind" wx:if="{{!select_kind}}" bindtap="on_click_select_menu" src="{{currentkind}}"></cover-image>
+    </map>
+  </view>
+  <!--Left Bar-->
+  <cover-view class="sport-kind-bar" wx:if="{{select_kind}}">
+    <cover-image id = "{{currentid}}" class="bar-item-sel" src="{{currentkind}}" bindtap="on_selectkind"></cover-image>
+    <cover-image class="bar-updown" bindtap="on_click_up" src="../../image/arrow-top.png"></cover-image>
+    <cover-view wx:for="{{show_array}}" wx:key="{{item.id}}">
+      <cover-image class="bar-item" id="{{item.id}}" src="{{item.src}}" bindtap="on_selectkind"></cover-image>
+    </cover-view>
+    <cover-image class="bar-updown" bindtap="on_click_down" src="../../image/arrow-bottom.png"></cover-image>
+  </cover-view>
+</view>

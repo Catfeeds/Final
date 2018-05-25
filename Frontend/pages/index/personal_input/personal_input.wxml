@@ -1,0 +1,55 @@
+<scroll-view scroll-y class="container" style="height: auto;">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{user_avatar}}"></image>
+    <view class="userinfo-nickname">
+      <label style="font-weight: bold;">{{nickname}}</label>
+    </view>
+  </view>
+  <view class='add-info'>
+    <view class='add-info-title'>
+      <text class='add-info-text' style="font-weight: bold;">附加信息</text>
+    </view>
+    <view class='real-name-view'>
+      <text class='real-name-text'>真实姓名:</text>
+      <input bindinput='on_Input_Realname' value="{{val_realname}}" class='real-name-input' placeholder='请输入您的姓名'></input>
+    </view>
+    <view class='real-phone-view'>
+      <text class='real-phone-text'>联系方式:</text>
+      <input bindinput='on_Input_Phonenumber' value="{{val_phonenumber}}" type="number" class='real-phone-input' placeholder='请输入您的手机号'></input>
+    </view>
+    <view class='mem-count-view'>
+      <text class='mem-count-text'>报名人数:</text>
+      <input type="number" value="{{val_memcount}}" bindinput='on_Input_Memcount' class='mem-count-input' placeholder='请填写报名人数'></input>
+    </view>
+    <view class='cost-view' wx:if="{{event.role*1 != 2}}">
+      <text class='cost-text'> 金额：{{total_cost}}</text>
+      <input class='cost-input' placeholder='' disabled='true'></input>
+    </view>
+  </view>
+  <view class='cost-way-view' wx:if="{{event.role*1 != 2}}">
+    <text class='cost-way-text'>支付方式</text>
+    <radio-group bindchange="on_click_payway" class="pay-way-radio">
+      <radio value='1' checked='true'>
+      </radio>
+      直接线上支付
+      <radio value='0'>
+      </radio>
+      活动结束线下支付
+    </radio-group>
+  </view>
+  <view class='event-info-view'>
+    <view class='event-info-border-view'>
+      <text class='event-info-border-text' style="font-weight: bold;">活动信息</text>
+    </view>
+    <view style='line-height: 88rpx;'>活动名称: {{event.eventName}}</view>
+    <view style='line-height: 88rpx;'>活动时间: {{event.start_time + '-' + event.end_time}}</view>
+    <view style='line-height: 88rpx;' wx:if="{{event.role*1 != 2}}">活动费用: {{event.cost}}元/人</view>
+    <view style='line-height: 88rpx;'>
+      <text class="detail_address">活动地址: </text>
+      <text class='detail_address1' selectable='true'>{{event.province+event.city+event.area+event.detail_address}}</text>
+    </view>
+  </view>
+</scroll-view>
+
+<button wx:if="{{event.role * 1 == 1}}" bindtap="on_Btn_OK" class='bnt-cost'>{{btnstr}}</button>
+<button wx:if="{{event.role * 1 == 2}}" bindtap="on_Btn_OK" class='bnt-cost'>确认参加</button>

@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view>
+  <view class="cls_score_title_bar">
+    <text class="cls_score_title">评分：</text>
+    <view wx:for="{{[1, 2, 3, 4, 5]}}">
+      <view wx:if="{{item <= count_yellowStar}}">
+        <image class="cls_score_star" src="{{img_yellow_start_src}}" mode="aspectFill" bindtap="subtractStar" style='left:{{star_img_position + index*50}}rpx' />
+      </view>
+      <view wx:else>
+        <image class="cls_score_star" src="{{img_black_start_src}}" mode="aspectFill" bindtap="additionStar" style='left:{{star_img_position + index*50}}rpx' />
+      </view>
+    </view>
+  </view>
+
+  <textarea bindinput="bindInputText" class="cls_score_text_area" placeholder="请输入你的评价…" maxlength='200' />
+
+  <text class="cls_text_count">{{text_count}}/200</text>
+  <button class="btn_add_comment" bindtap="btn_submit">发表评价</button>
+</view>

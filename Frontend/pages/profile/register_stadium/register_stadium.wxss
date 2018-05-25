@@ -1,0 +1,114 @@
+.container {
+  background-color: white;
+}
+
+.stadium-avatar-view {
+  height: 135rpx;
+  width: 100%;
+  border-bottom: 3rpx solid #f4f4f4;
+}
+
+.stadium-avatar-text {
+  display: inline-block;
+  padding-left: 30rpx;
+  line-height: 138rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+}
+
+.stadium-avatar-image {
+  float: right;
+  margin-top: 19rpx;
+  margin-right: 45rpx;
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  border: dashed 5rpx #f4f4f4;
+}
+
+.stadium-image-next {
+  float: right;
+  padding-top: 56rpx;
+  margin-right: 30rpx;
+  width: 15rpx;
+  height: 26rpx;
+}
+
+.stadium-input-view {
+  width: calc(100% - 30rpx);
+  height: 383rpx;
+  padding-left: 30rpx;
+  border-bottom: 3rpx solid #f4f4f4;
+}
+
+.stadium-input-text {
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+  padding-top: 24rpx;
+}
+
+.stadium-input-textarea {
+  width: 690rpx;
+  height: 258rpx;
+  margin-top: 31rpx;
+  background: #f2f2f2;
+  border-radius: 8rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #888;
+  letter-spacing: 1.04rpx;
+  line-height: 50rpx;
+}
+
+.stadium-images-view {
+  width: calc(100% - 30rpx);
+  height: auto;
+  padding-left: 30rpx;
+}
+
+.stadium-images-text {
+  padding-top: 23rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+  color: #333;
+  letter-spacing: 0.64rpx;
+}
+
+.stadium-images-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-top: 31rpx;
+  border: dashed 5rpx #f4f4f4;
+  vertical-align: top;
+}
+
+.stadium-images-delete {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+  transform: translate(-25rpx, 15rpx);
+}
+
+.btn-submit {
+  width: 100%;
+  height: 98rpx;
+  margin-top: 27rpx;
+  background-color: #e6b53c;
+  font-family: PingFangSC-Semibold;
+  font-size: 32rpx;
+  color: #fff;
+  letter-spacing: 1.54rpx;
+  line-height: 98rpx;
+}
+
+.stadium-images-delete1
+{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+  transform: translate(-25rpx, 15rpx);
+}

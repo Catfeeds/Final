@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<import src="honeybox/honeybox.wxml"/>
+<view class="container">
+  <view class='content-view'>
+    <image class='content-background-image' src='../../image/garden_bg@2x.png'></image>
+    <image class='content-avatar-image' src='{{avatar}}'></image>
+    <text class='content-honey-text'>{{total}}ml</text>
+    <image bindtap="On_click_beeshop" class="content-shop-imagebtn" src='../../image/garden_sc@2x.png'></image>
+    <image bindtap="On_click_beelist" class="content-list-imagebtn" src='../../image/garden_dh@2x.png'></image>
+    <image bindtap="On_click_comment"class="content-explain-imagebtn" src='../../image/garden_bz@2x.png'></image>
+    <view class="content-bee-view">
+    <template is="honeybox" wx:for="{{honeybox_array}}" wx:key="{{item.start_time}}" data="{{item}}"/>
+    </view>
+  </view>
+</view>

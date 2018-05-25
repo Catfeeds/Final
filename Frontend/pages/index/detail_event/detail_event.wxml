@@ -1,0 +1,77 @@
+<!-- User Activity Detail Viewer -->
+<view class="container">
+  <scroll-view scroll-y class='postadd-view'>
+    <view class="personal-img-wrapper" bindtap="set_preview">
+      <image class="personal-event-img" mode="aspectFill" src="{{event.pic}}" />
+    </view>
+    <view class="event-info">
+      <view class="event-type-info">
+        <text class="event-type" style="font-weight: bold;">{{event.eventName}}</text>
+        <text class="event-status" style="font-weight: bold;">{{eventState[event.state]}}</text>
+      </view>
+      <view class='detail-info'>
+        <image src='../../../image/my_bee_category@2x.png'></image>
+        <text>{{eventType[event.type]}}</text>
+        <image src='../../../image/my_bee_number@2x.png'></image>
+        <text>{{register_amount}}人</text>
+        <image wx:if="{{event.role != '2'}}" src='../../../image/my_bee_m@2x.png'></image>
+        <text wx:if="{{event.role != '2'}}">{{event.cost}}元/人</text>
+      </view>
+      <block wx:if="{{favourite_num==1}}">
+        <image class="favor_star" bindtap="btn_Clicked_Favor" src='../../../image/good_s@2x.png'></image>
+      </block>
+      <block wx:else>
+        <image class="favor_star" bindtap="btn_Clicked_Favor" src='../../../image/good_n@2x.png'></image>
+      </block>
+      <text class='favor_text'>{{rating}}</text>
+      <view class="act_date">
+        <view>时间 | {{event.start_time+'-'+event.end_time}}</view>
+      </view>
+      <view class="temp-fonts">
+        <view class='detail-add'>地址 |</view>
+        <view class='detail-add1'><text selectable='true'>{{event.province+event.city+event.area+event.detail_address}}</text></view>
+      </view>
+    </view>
+    <view class='place-info'>
+      <view wx:if="{{event.role != '2'}}" class='place-info-view'>
+        <text class='place-info-text'>场馆名称：{{event.site_name}}</text>
+      </view>
+      <view class='place-info-view'>
+        <text wx:if="{{event.role == '1'}}" class='place-info-text'>馆主姓名：{{event.name}}</text>
+        <text wx:if="{{event.role == '2'}}" class='place-info-text'>发起人：{{event.name}}</text>
+      </view>
+      <view class='place-info-view'>
+        <view class='place-info-text' bindtap="phone_call">联系方式：<text style='text-decoration: underline; color: blue;'>{{event.agent_phone}}</text></view>
+      </view>
+      <view class='place-info-view'>
+        <text class='place-info-text'>人数上限：不超过{{event.limit}}人</text>
+      </view>
+    </view>
+    <view class='introduce'>
+      <view class='introduce-view'>
+        <text class='introduce-border' style="font-weight: bold;">活动简介</text>
+      </view>
+      <view style='width: 690rpx; padding-left: 30rpx;'>
+        <text class='introduce-detail' selectable='true'>{{event.comment}}</text>
+      </view>
+    </view>
+    <view class='applicant-view'>
+      <view class='applicant-title'>
+        <text class='applicant-title-text' style="font-weight: bold;">报名成员（{{register_amount}}人）</text>
+      </view>
+      <view class='applicant-each-view' wx:for="{{booking}}" wx:key="{{item.name}}">
+        <image class="applicant-image" src="{{item.avatar}}"></image>
+        <view class='applicant-name'>{{item.name}}({{item.reg_num}}人)</view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='btn-footer'>
+    <block wx:if="{{event.role==1}}">
+      <button bindtap="btn_Clicked_Gym_Info" id="{{event.boss_id}}" class='btn-gym-info'>查看场馆</button>
+      <button bindtap="btn_Clicked_Personal_Input" id="{{event.id}}" disabled="{{is_disabled}}" class='btn-final-participate'>{{btn_text}}</button>
+    </block>
+    <block wx:else>
+      <button bindtap="btn_Clicked_Personal_Input" id="{{event.id}}" disabled="{{is_disabled}}" class='btn-personal-participate'>{{btn_text}}</button>
+    </block>
+  </view>
+</view>

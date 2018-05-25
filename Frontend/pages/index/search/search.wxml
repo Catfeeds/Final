@@ -1,0 +1,21 @@
+<view class='tcontainer'>
+  <view class='input-view'>
+    <input class='input-box' bindinput="on_input_text" placeholder='输入地址' value='{{inputtext}}'></input>
+    <image class='input-icon' src='../../../image/search@2x.png'></image>
+    <view class='search-btn' bindtap='on_click_cancel' >取消</view>
+  </view>
+  <scroll-view class='input-tip'>
+    <view class="input-tip-view" bindtap="on_bindSearch" id = "{{i.id}}" data-keywords="{{i.name}}"  wx:for="{{tips}}" wx:key="{{i.name}}" wx:for-item="i">
+      {{i.name}}
+    </view>
+  </scroll-view>
+  <view wx:if="{{isshow}}">
+    <view class='delete-view'>
+      <view class='delete-text' style="font-weight: bold;">搜索历史</view>
+      <image class='delete-icon' bindtap="on_click_delete"  src='../../../image/Emptied.png'></image>
+    </view>
+    <scroll-view class='favor-text' bindtap="on_click_favor_item" id = "{{index}}"  wx:for="{{favorinput}}" wx:key="{{item.name}}">
+      {{item.name}}
+    </scroll-view>
+  </view>
+</view>
