@@ -22,4 +22,4 @@
     </view>
   </view>
 </scroll-view>
-<button id="{{product.id}}" bindtap="On_click_order" disabled="{{disable}}" class='btn_submit'>{{btn_text}}</button>
+<button id="{{product.id}}" bindtap="On_click_order" wx:if="{{visible==1}}" disabled="{{disable}}" class='btn_submit'>{{btn_text}}</button>

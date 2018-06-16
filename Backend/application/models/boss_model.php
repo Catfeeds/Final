@@ -117,7 +117,7 @@ class boss_model extends CI_Model
      */
     function getSiteStatus($bossId)
     {
-        $this->db->select("site_icon, site_introduction, site_service");
+        $this->db->select("site_type, site_introduction, site_service");
         $this->db->from("boss");
         $this->db->where("boss_id", $bossId);
         $query = $this->db->get();
@@ -191,7 +191,7 @@ class boss_model extends CI_Model
      */
     function getSiteByDistance($longitude, $latitude)
     {
-        $this->db->select("boss_id, longitude, latitude, map_icon as site_icon");
+        $this->db->select("boss_id, longitude, latitude, site_type, map_icon as site_icon");
         $this->db->from("boss");
         $this->db->where("( 6371 * acos( cos( radians($latitude) ) * cos( radians( latitude) ) 
    * cos( radians(longitude) - radians($longitude)) + sin(radians($latitude)) 

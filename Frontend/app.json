@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/activity/activity",
     "pages/index/index",
     "pages/index/detail_gym/detail_gym",
     "pages/index/detail_event/detail_event",
@@ -23,7 +24,6 @@
     "pages/profile/delivery/delivery",
     "pages/profile/delivery/editdelivery",
     "pages/profile/register_stadium/register_stadium",
-    "pages/activity/activity",
     "pages/backyard/backyard",
     "pages/backyard/mainbeeshop/mainbeeshop",
     "pages/backyard/product_detail/product_detail",

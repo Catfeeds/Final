@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="map_container" >
-    <map class="bee-map" id="mymap" longitude="{{current_longitude}}" latitude="{{current_latitude}}" scale="13" show-location="false" markers="{{markers}}" bindmarkertap="on_Click_maker">
+  <view class="map_container">
+    <map class="bee-map" id="mymap" longitude="126.67736" latitude="45.784396" scale="13" show-location="false" markers="{{markers}}" bindmarkertap="on_Click_maker">
       <!--Top Items-->
       <cover-image class="news-image" bindtap="on_click_news" src="../../image/inf@2x.png"></cover-image>
       <cover-view wx:if="{{newscount != 0}}" class='news-new-count'>{{newscount}}</cover-view>

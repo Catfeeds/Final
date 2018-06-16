@@ -75,10 +75,27 @@ class booking_model extends CI_Model
      */
     function getBookingDetailByEvent($eventId)
     {
-        $this->db->select("user.avatar,user.nickname,  booking.name,booking.phone, booking.reg_num, booking.pay_type, booking.state, event.cost,event.agent_name, event.agent_phone, sum(booking.reg_num) as register_num");
+        $this->db->select("user.avatar,user.nickname,user.no as user_id,  booking.name,booking.phone, booking.reg_num, booking.pay_type, booking.state, event.cost,event.agent_name, event.agent_phone, sum(booking.reg_num) as register_num");
         $this->db->from("booking");
         $this->db->join("user", "booking.user_id = user.no");
-        $this->db->join("event", "booking.event_id = event.id and event.state=booking.state");
+        $this->db->join("event", "booking.event_id = event.id");
+        $this->db->where("booking.event_id", $eventId);
+        $this->db->group_by("booking.id");
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+       /**
+     * This function is used to get detailed information of booking
+     * @param number $eventId : This is id of event
+     * @return number $count : This is information of booking found
+     */
+    function getBookingDetailByEvent1($eventId)
+    {
+        $this->db->select("user.avatar,user.nickname,user.no as user_id,  booking.name,booking.phone, booking.reg_num, booking.pay_type, booking.state, event.cost,event.agent_name, event.agent_phone, sum(booking.reg_num) as register_num");
+        $this->db->from("booking");
+        $this->db->join("user", "booking.user_id = user.no");
+        $this->db->join("event", "booking.event_id = event.id and booking.state = event.state");
         $this->db->where("booking.event_id", $eventId);
         $this->db->group_by("booking.id");
         $query = $this->db->get();

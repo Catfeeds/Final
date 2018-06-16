@@ -9,7 +9,7 @@ Page({
     appid: 'wxea381fb0ca7c2a24', //appid needs to provide it yourself, here appid I randomly  
     secret: 'fengtiWeixin17642518820android12', //secret is required to provide, where the secret I wrote 
   },
-  onLoad() {
+  onLoad(){
   },
   onShow: function () {
     var that = this;
@@ -47,8 +47,8 @@ Page({
                     if (todayfirst != tempdate2.getDate()) {
                       var tempdate = new Date()
                       wx.setStorageSync("todayselected", [])
-                      wx.setStorageSync("daily_honey", [0, 0])
-                      app.globalData.daily_honey = [0, 0]
+                      wx.setStorageSync("daily_honey", [0,0])
+                      app.globalData.daily_honey = [0,0]
 
                       var stephoney = (1 * app.globalData.laststep) * (app.globalData.rule[3].value * 1)
                       stephoney = 1 * Math.floor(stephoney)
@@ -62,7 +62,7 @@ Page({
                           var temparray = app.globalData.honey_info.honeybox_array
                           var sum = stephoney
                           for (iter = temparray.length - 1; iter >= 0; iter--) {
-                            if (sum + temparray[iter] < (app.globalData.rule[6].value * (app.globalData.userInfo.isVIP + 1))) {
+                            if (sum + temparray[iter] < (app.globalData.rule[6].value * (app.globalData.userInfo.isVIP+1))) {
                               sum = sum + temparray[iter]
                             }
                             else {
@@ -92,10 +92,10 @@ Page({
                             break;
                           }
                         }
-
+                                                
                         tempdate = Date.parse(new Date(tempdate.getFullYear(), tempdate.getMonth(), tempdate.getDate())) + 25200000
                         app.globalData.honey_info.honeybox_array.push({ x: tempx, y: tempy, honey: stephoney, start_time: tempdate })
-
+                        
                         wx.setStorageSync("honey_info", app.globalData.honey_info)
                         tempdate = new Date()
                         wx.setStorageSync("todayfirst", tempdate.getDate())
@@ -109,7 +109,7 @@ Page({
                             todayfirst: tempdate.getDate(),
                             user_id: app.globalData.userInfo.user_id
                           },
-                          success: function () {
+                          success: function(){
                             console.log('success')
                           }
                         })
@@ -132,6 +132,7 @@ Page({
       honeybox_array: honey_info.honeybox_array,
       avatar: app.globalData.userInfo.avatar
     })
+    console.log(honey_info.honeybox_array)
   },
   On_click_beeshop: function () {
     wx.navigateTo({
@@ -149,7 +150,7 @@ Page({
     })
   },
   on_click_honey: function (event) {
-    if (app.globalData.userInfo.user_id == 0) {
+    if(app.globalData.userInfo.user_id==0){
       return
     }
     if (app.globalData.isactivetime == 0) {
@@ -174,7 +175,7 @@ Page({
       }
     }
     if (app.globalData.daily_honey[1] >= app.globalData.rule[6].value) {
-      var title = '您今天已经收获了' + app.globalData.rule[6].value + 'ml蜂蜜，明天再来哦'
+      var title = '您今天已经收获了' + app.globalData.rule[6].value+'ml蜂蜜，明天再来哦'
       console.log(title)
       wx.showToast({
         title: title,
@@ -187,13 +188,13 @@ Page({
         honey_info.honeybox_array[selected].honey -= app.globalData.rule[6].value - app.globalData.daily_honey[1]
         honey = app.globalData.rule[6].value - app.globalData.daily_honey[1]
       }
-      else {
+      else{
         honey_info.honeybox_array.splice(selected, 1)
       }
-      app.globalData.daily_honey[1] = app.globalData.daily_honey[1] * 1 + 1 * honey
+      app.globalData.daily_honey[1] = app.globalData.daily_honey[1] * 1 + 1*honey
       honey_info.total_honey = parseFloat(1 * honey) + parseFloat(honey_info.total_honey * 1);
       this.setData({
-        honeybox_array: honey_info.honeybox_array
+        honeybox_array:honey_info.honeybox_array
       })
       wx.setStorageSync('daily_honey', app.globalData.daily_honey)
       wx.setStorageSync('honey_info', honey_info)
@@ -209,8 +210,8 @@ Page({
           amount: honey_info.total_honey,
           honey: honey,
           user_id: app.globalData.userInfo.user_id,
-          todayfirst: wx.getStorageSync('todayfirst'),
-          daily_honey: JSON.stringify(wx.getStorageSync('daily_honey'))
+          todayfirst:wx.getStorageSync('todayfirst'),
+          daily_honey:JSON.stringify(wx.getStorageSync('daily_honey'))
         },
         success: function (res) {
         }

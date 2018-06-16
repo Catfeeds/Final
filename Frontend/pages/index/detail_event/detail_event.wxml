@@ -51,7 +51,7 @@
       <view class='introduce-view'>
         <text class='introduce-border' style="font-weight: bold;">活动简介</text>
       </view>
-      <view style='width: 690rpx; padding-left: 30rpx;'>
+      <view style='width: 80%; padding-left: 30rpx;'>
         <text class='introduce-detail' selectable='true'>{{event.comment}}</text>
       </view>
     </view>

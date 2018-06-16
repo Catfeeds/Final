@@ -147,7 +147,6 @@ Page({
         this.showevent(2)
         break;
     }
-    console.log(this.data.register_num[0])
   },
   //called when user clicked cancel event button.
   btn_remove_booking: function (event) {

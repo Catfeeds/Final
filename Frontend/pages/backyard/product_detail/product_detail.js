@@ -8,8 +8,9 @@ Page({
    */
   data: {
     id:0,
+    visible: 0,
     disable: 1,
-    btn_text:"立即兑换",
+    btn_text:"蜂蜜不足",
     comment: ''
   },
 
@@ -28,7 +29,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res.data.result[0])
         if (!res.data.status) return;
         that.data.id = res.data.result[0].id
         that.data.cost = res.data.result[0].cost
@@ -44,6 +44,7 @@ Page({
         }
         var url = app.globalData.uploadURL + res.data.result[0].pic ;
         res.data.result[0].pic = url
+        that.setData({ visible: 1 })
         /*
         if (res.data.result[0].amount == '0')
         {

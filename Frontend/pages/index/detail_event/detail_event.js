@@ -30,12 +30,18 @@ Page({
       app.onLaunch();
       setTimeout(function () {
         that.onInitStart(option);
-      }, 2500);
+      }, 4000);
     } else {
       that.onInitStart(option);
     }
   },
   onInitStart: function (option) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
     this.setData({
       userInfo: app.globalData.userInfo,
       eventType: app.globalData.eventType,
@@ -44,6 +50,10 @@ Page({
     });
     var id = option.id;    
     var that = this;
+    var user_id = app.globalData.userInfo.user_id
+    if(user_id==0){
+      user_id= -1
+    }
     wx.request({
       url: app.globalData.mainURL + 'api/getEventDetail',
       method: 'POST',
@@ -52,7 +62,7 @@ Page({
       },
       data: {
         'event_id': id,
-        'user_id': app.globalData.userInfo.user_id
+        'user_id': user_id
       },
       success: function (res) {
         console.log(res.data.result[0])

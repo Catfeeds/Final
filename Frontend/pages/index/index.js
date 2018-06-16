@@ -1,3 +1,4 @@
+import download from "download.js"
 const app = getApp()
 var amapFile = require('../../lib/amap-wx.js')
 var myAmap = new amapFile.AMapWX({ key: "F8f1f5c8a20c199dd0f70f5a6b162280" })
@@ -14,10 +15,11 @@ Page({
     downpoint: 9,
     currentkind: "../../image/move00@2x.png",
     marker: [],
+    file_path:[],
     newscount: 0,
     events: [],
     currentid: 0,
-    num: 0,
+    num: 0
   },
   onLoad: function (option) {
     mapCtx = wx.createMapContext('mymap')
@@ -55,9 +57,9 @@ Page({
       show_array: that.data.show_array,
       currentkind: that.data.currentkind,
       currentid: 0,
-      select_kind: that.data.select_kind
+      select_kind: that.data.select_kind,
     })
-
+    
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
@@ -75,8 +77,8 @@ Page({
         wx.request({
           url: app.globalData.mainURL + 'api/getItemsOnMap',
           data: {
-            latitude: that.data.current_latitude,
-            longitude: that.data.current_longitude
+            latitude: 45.784396,
+            longitude: 126.677736
           },
           method: 'POST',
           header: {
@@ -120,17 +122,6 @@ Page({
                   }
                 }
                 if (iter == res.data.honey.length) {
-                  wx.getSavedFileList({
-                    success: function (res) {
-                      if (res.fileList.length > 0) {
-                        wx.removeSavedFile({
-                          filePath: res.fileList[0].filePath,
-                          complete: function (res) {
-                          }
-                        })
-                      }
-                    }
-                  })
                   var sites = res.data.site
                   iter = 0
                   var tempPath = []
@@ -141,11 +132,38 @@ Page({
                       title: '加载中',
                     })
                   }
-                  while (temp < sites.length) {
-                    that.download_icon(res.data.site[temp].site_icon, temp, sites)
-                    that.sleep(10);
-                    temp++;
+                  var obj=[]
+                  for(var index=0; index< sites.length; index++){
+                    obj[index]=app.globalData.uploadURL + sites[index].site_icon
                   }
+                  console.log(sites)
+                  if(that.data.file_path.length==0){
+                    that.download_icons(sites, 0)
+                  }
+                  else{
+                    wx.getSystemInfo({
+                      success: function (res2) {
+                        for (var index1 = 0; index1 < that.data.file_path.length; index1++) {
+                          that.data.marker.push({
+                            iconPath: that.data.file_path[index1],
+                            id: 'o' + sites[index1].boss_id,
+                            latitude: 1 * sites[index1].latitude,
+                            longitude: 1 * sites[index1].longitude,
+                            width: (69 / 750) * res2.screenWidth,
+                            height: (73 / 1344) * res2.screenHeight,
+                            kind: "site",
+                          })
+                        }
+                        that.show_marker()
+                      }
+                    })
+                  }
+                  //while (temp < sites.length) {
+                    //that.download_icon(res.data.site[temp].site_icon, temp, sites)
+                    //that.sleep(10);
+                    
+                    temp++;
+                  //}
                 }
               },
             })
@@ -189,50 +207,114 @@ Page({
   },
   download_honey: function (res, res2, iter, brandx, brandy) {
     setTimeout(function () {
-      console.log(iter)
     }, 1000)
 
   },
-  getUserinfo: function(e)
-  {
-    console.log(e)
-    app.globalData.userInfo.nickname = e.detail.userInfo.nickName
-    app.globalData.userInfo.avatar = e.detail.userInfo.avatarUrl
+  download_icons: function(sites, index){
+    var obj=[]
+    var that=this
+    var i=0
+    for(var key=0; key<10; key++){
+      i=index*10+key
+      //console.log(i)
+      obj[key] =  sites[i].site_icon
+      if (i == sites.length - 1) {
+        break
+      }
+    }
+    download.downloadSaveFiles({
+      urls: obj,
+      success: function (res) {
+        console.log(res);
+        for(var index1 = 0; index1<obj.length; index1++){
+          that.data.file_path[index*10+index1] = res.get(app.globalData.uploadURL + obj[index1]+index1).tempFilePath
+        }
+        if (i < sites.length - 1) {
+          that.download_icons(sites, index + 1)
+        }
+        else {
+          console.log(that.data.file_path)
+          wx.getSystemInfo({
+            success: function (res2) {
+              for (var index1 = 0; index1 < that.data.file_path.length; index1++) {
+                that.data.marker.push({
+                  iconPath: that.data.file_path[index1],
+                  id: 'o' + sites[index1].boss_id,
+                  latitude: 1 * sites[index1].latitude,
+                  longitude: 1 * sites[index1].longitude,
+                  width: (69 / 750) * res2.screenWidth,
+                  height: (73 / 1344) * res2.screenHeight,
+                  kind: "site",
+                })
+              }
+              that.show_marker()
+            }
+          })
+        }
+      },
+      fail: function (e) {
+        //console.info("下载失败");
+      }
+    });
   },
   download_icon: function (map_icon, index, sites) {
     var iter = index
     var that = this
     wx.getSystemInfo({
       success: function (res2) {
-        wx.downloadFile({
-          url: app.globalData.uploadURL + map_icon,
-          success: function (res1) {
-            var temppath = res1.tempFilePath
-            wx.saveFile({
-              tempFilePath: temppath,
-              success: function (res) {
-                that.data.marker.push({
-                  iconPath: res.savedFilePath,
-                  id: 'o' + sites[iter].boss_id,
-                  latitude: 1 * sites[iter].latitude,
-                  longitude: 1 * sites[iter].longitude,
-                  width: (69 / 750) * res2.screenWidth,
-                  height: (73 / 1344) * res2.screenHeight,
-                  kind: "site",
-                })
+        console.log(map_icon)
+        if(map_icon!="map_icon"){
+          wx.downloadFile({
+            url: app.globalData.uploadURL + map_icon,
+            success: function (res1) {
+              var temppath = res1.tempFilePath
+              wx.saveFile({
+                tempFilePath: temppath,
+                success: function (res) {
+                  that.data.marker.push({
+                    iconPath: res.savedFilePath,
+                    id: 'o' + sites[iter].boss_id,
+                    latitude: 1 * sites[iter].latitude,
+                    longitude: 1 * sites[iter].longitude,
+                    width: (69 / 750) * res2.screenWidth,
+                    height: (73 / 1344) * res2.screenHeight,
+                    kind: "site",
+                  })
 
-                if (app.globalData.map_idx == sites.length - 1) {
-                  that.show_marker()
+                  if (app.globalData.map_idx == sites.length - 1) {
+                    that.show_marker()
+                  }
+                  app.globalData.map_idx++
+                  //console.log(app.globalData.map_idx)
+                },
+                fail: function(e){
+                  console.log(e)
                 }
-                app.globalData.map_idx++
-              }
-            })
+              })
+            }
+          })
+        }
+        else{
+          that.data.marker.push({
+            iconPath: "/image/Business@2x.png",
+            id: 'o' + sites[iter].boss_id,
+            latitude: 1 * sites[iter].latitude,
+            longitude: 1 * sites[iter].longitude,
+            width: (69 / 750) * res2.screenWidth,
+            height: (73 / 1344) * res2.screenHeight,
+            kind: "site",
+          })
+          that.sleep(10)
+          if (app.globalData.map_idx == sites.length - 1) {
+            that.show_marker()
           }
-        })
+          app.globalData.map_idx++
+        }
       }
     })
   },
   show_marker: function (kind = 0, first = 1) {
+    console.log(this.data.marker)
     wx.hideLoading()
     var tempmarker = new Array()
     if (kind == 0) {
@@ -321,8 +403,9 @@ Page({
         return;
       }
       var todayarray = wx.getStorageSync("todayselected")
-      if (todayarray == '') {
-        todayarray = []
+      if(todayarray=='')
+      {
+        todayarray=[]
       }
       for (var iter = 0; iter < todayarray.length; iter++) {
         if (todayarray[iter] == event.markerId) {

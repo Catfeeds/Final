@@ -9,7 +9,7 @@ class alarm_user_model extends CI_Model
      */
     function getAlarm($user_id)
     {
-        $this->db->select("alarm_user.*, user.name");
+        $this->db->select("alarm_user.*, user.name, user.nickname");
         $this->db->from('alarm_user');
         $this->db->join("user", "user.no = alarm_user.alarm_org_id", "left");
         $this->db->where("user_id", $user_id);

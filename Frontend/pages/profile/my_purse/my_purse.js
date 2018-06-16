@@ -8,7 +8,7 @@ Page({
     account_balance: 0,
     is_new_user: 1,
     cost: 0,
-    receiver: "",
+    receiver: null,
     credit_no: "",
     id_no: "", 
     id_no_hidden: "",

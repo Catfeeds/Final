@@ -27,6 +27,7 @@ $this->load->model('exchange_model');
 $this->load->model('binding_model');
 $this->load->model('alarm_user_model');
 $this->load->model('alarm_admin_model');
+$this->load->model('feedback_model');
 $this->checkEventState();
 }
 
@@ -61,6 +62,22 @@ $result = $this->user_model->getState($nickname);
 if(count($result)>0){
 $member = $this->member_state_model->getStateById($result[0]->no);
 echo json_encode(array('status' => true, 'result' => $result, 'member' => $member), 200);
+} else {
+echo json_encode(array('status' => false), 200);
+}
+exit;
+}
+
+/*
+* this function is used to get all of the information of the user by using nickname
+*/
+public function haveStadium()
+{
+$book = json_decode(file_get_contents("php://input"));
+$user_id = $book->{'user_id'};
+$result = $this->db->query("select site_introduction from boss where boss_id=".$user_id)->result();
+if(count($result)>0){
+echo json_encode(array('status' => true, 'result' => $result), 200);
 } else {
 echo json_encode(array('status' => false), 200);
 }
@@ -112,6 +129,18 @@ $result = $this->booking_model->getBookingByUser($user_id);
 $register_num = $this->event_model->getRegisterNum($result);
 if(count($result)>0){
 echo json_encode(array('status' => true, 'result' => $result, 'register_num' => $register_num), 200);
+} else {
+echo json_encode(array('status' => false), 200);
+}
+}
+
+public function getBackyard()
+{
+$book = json_decode(file_get_contents("php://input"));
+$user_id = $book->{"user_id"};
+$result = $this->db->query("select * from honey_backyard where user_id=".$user_id)->result();
+if(count($result)>0){
+echo json_encode(array('status' => true, 'result' => $result), 200);
 } else {
 echo json_encode(array('status' => false), 200);
 }
@@ -331,12 +360,27 @@ $rating_detail = $this->rating_model->getRatingByEvent($event_id);
 $register_num = $this->booking_model->getRegisterNum($event_id);
 $is_rating = $this->favourite_event_model->is_rating($user_id);
 $favor = $this->getFavouriteAmount($result);
+$feedbacks= $this->feedback_model->getFeedbacks($event_id);
 if(count($result)>0){
-echo json_encode(array('status' => true, 'result' => $result, 'booking' => $booking, 'rating' => $rating, 'rating_detail' => $rating_detail, 'register_num' => $register_num, 'favor' => $favor), 200);
+echo json_encode(array('status' => true, 'result' => $result, 'booking' => $booking, 'rating' => $rating, 'rating_detail' => $rating_detail, 'register_num' => $register_num, 'favor' => $favor, 'feedbacks' => $feedbacks), 200);
 } else {
 echo json_encode(array('status' => false), 200);
 }
 }
+
+/*
+* this function is used to add feedback to event
+*/
+public function addFeedback(){
+    $book = json_decode(file_get_contents("php://input"));
+    $info['event_id'] = $book->{"event_id"};
+    $info['user_id'] = $book->{'user_id'};
+    $info['comment'] = $book->{'comment'};
+    $info['submit_time'] = date("Y-m-d H:i:s");
+    $this->feedback_model->addFeedback($info);
+    echo json_encode(array('status' => true), 200);
+}
+
 
 /*
 * this function is used to set favourite state of event
@@ -396,7 +440,7 @@ public function getBookingDetailByEvent()
 {
 $book = json_decode(file_get_contents("php://input"));
 $event_id = $book->{"event_id"};
-$booking = $this->booking_model->getBookingDetailByEvent($event_id);
+$booking = $this->booking_model->getBookingDetailByEvent1($event_id);
 if(count($booking)>0){
 echo json_encode(array('status' => true, 'booking' => $booking), 200);
 } else {
@@ -792,11 +836,11 @@ echo json_encode(array('status' => false), 200);
 */
 public function addSiteInfo()
 {
-$user_id = $this->input->post('user_id');
-$info['site_icon'] =  $this->image_upload();
-$info['map_icon'] = $this->image_merge($info['site_icon'], $user_id);
-$info['site_introduction'] = $this->input->post('introduction');
-$info['site_service'] = $this->input->post('service');
+$book = json_decode(file_get_contents("php://input"));
+$user_id = $book->{'user_id'};
+$info['site_type'] = $book->{'site_type'};
+$info['site_introduction'] = $book->{'introduction'};
+$info['site_service'] = $book->{'service'};
 $result = $this->boss_model->addSiteInfo($user_id, $info);
 if($result == true){
 echo json_encode(array('status' => true), 200);
@@ -841,11 +885,11 @@ echo json_encode(array('status' => false), 200);
 */
 public function editSiteInfo()
 {
-$user_id = $this->input->post('user_id');
-$info['site_icon'] =  $this->image_upload();
-$info['map_icon'] = $this->image_merge($info['site_icon'], $user_id);
-$info['site_introduction'] = $this->input->post('introduction');
-$info['site_service'] = $this->input->post('service');
+$book = json_decode(file_get_contents("php://input"));
+$user_id = $book->{'user_id'};
+$info['site_type'] = $book->{'site_type'};
+$info['site_introduction'] = $book->{'introduction'};
+$info['site_service'] = $book->{'service'};
 $result = $this->boss_model->editSiteInfo($user_id, $info);
 if($result == true){
 echo json_encode(array('status' => true), 200);
@@ -858,7 +902,7 @@ public function editSiteInfo1()
 {
 $book = json_decode(file_get_contents("php://input"));
 $user_id = $book->{'user_id'};
-$info['site_icon'] = $book->{'site_icon'};
+$info['site_type'] = $book->{'site_type'};
 $info['site_introduction'] = $book->{'introduction'};
 $info['site_service'] = $book->{'service'};
 $result = $this->boss_model->editSiteInfo($user_id, $info);
@@ -944,7 +988,9 @@ public function setTodayFirst()
 $book = json_decode(file_get_contents("php://input"));  
 $today_first = $book->{'todayfirst'}; 
 $user_id = $book->{'user_id'}; 
-$this->db->query('update user set todayfirst='.$today_first.' where no='.$user_id);
+$honey = $book->{'honey'};
+$this->db->query('update user set todayfirst='.$today_first.', daily_honey="[0,0]" where no='.$user_id);
+$this->honey_model->addBackyard($user_id, $honey);
 return;
 }
 
@@ -1165,9 +1211,14 @@ $amount = $book->{'amount'};
 $user_id = $book->{'user_id'};
 $honey = $book->{'honey'};
 $daily_honey = $book->{'daily_honey'};
-$result = $this->user_model->catchHoney($amount, $user_id, $daily_honey);
 if($no!=0){
 $result = $this->honey_model->catchHoney($no, $honey);
+$result = $this->user_model->catchHoney($amount, $user_id, $daily_honey);
+}
+else{
+    $backyard_no = $book->{'backyard_no'};
+    $this->honey_model->catchBackyardHoney($backyard_no, $honey);
+    $result = $this->user_model->catchHoney($amount, $user_id, $daily_honey);
 }
 if($result){
 echo json_encode(array('status' => true), 200);

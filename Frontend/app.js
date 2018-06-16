@@ -89,6 +89,14 @@ App({
     })
     wx.login({
       success: function (res) {
+        var info = _this.globalData.userInfo;
+        wx.getUserInfo({
+          success: function (res) {
+            info.nickname = res.userInfo.nickName;
+            _this.globalData.nickname = info.nickname
+            info.avatar = res.userInfo.avatarUrl;
+          }
+        })
         _this.globalData.user_code = res.code;
         wx.request({
           url: _this.globalData.mainURL + "api/getopenid",
@@ -118,125 +126,116 @@ App({
                     wx.setStorageSync('last_step', _this.globalData.laststep = data.stepInfoList.pop().step * 1)
                   }
                 })
-              }
-            })
-            wx.getUserInfo({
-              success: function (res) {
-                var info = _this.globalData.userInfo;
-                info.nickname = res.userInfo.nickName;
-                _this.globalData.nickname = info.nickname
-                info.avatar = res.userInfo.avatarUrl;
-                wx.request({
-                  url: _this.globalData.mainURL + 'api/getUserStateByOpenId',
-                  data: {
-                    open_id: obj.openid
-                  },
-                  method: 'POST',
-                  header: {
-                    'content-type': 'application/json'
-                  },
-                  success: function (res) {                    
-                    if (res.data.status == false) {
-                      wx.setStorageSync("todayfirst", 0)
-                      wx.setStorageSync("todayselected", [])
-                      wx.setStorageSync("honey_info", {
-                        total_honey: 0,
-                        honeybox_array: []
-                      })
-                      wx.setStorageSync("daily_honey", [0, 0])
-                      wx.setStorageSync("favorinputtext", [])
-                      wx.setStorageSync("have_stadium", 0)
-                      wx.setStorageSync("isfirstcreate", 1)
-                      setTimeout(function () {
-                        _this.onLaunch();
-                      }, 2000);
-                      wx.request({
-                        method: 'POST',
-                        header: {
-                          'content-type': 'application/json'
-                        },
-                        url: _this.globalData.mainURL + 'api/addNewUser',
-                        data: {
-                          nickname: _this.globalData.userInfo.nickname,
-                          avatar: _this.globalData.userInfo.avatar,
-                          open_id: obj.openid
-                          // 'user_code': _this.globalData.user_code
-                          // 'session_key': _this.globalData.session_key
-                        },
-                        success: function (ret) {
-                          // if (ret.data.status) {
-                          //   // var info = ret.data.result;
-                          //   // //_this.globalData.userInfo;
+                    wx.request({
+                      url: _this.globalData.mainURL + 'api/getUserStateByOpenId',
+                      data: {
+                        open_id: obj.openid
+                      },
+                      method: 'POST',
+                      header: {
+                        'content-type': 'application/json'
+                      },
+                      success: function (res) {
+                        if (res.data.status == false) {
+                          wx.setStorageSync("todayfirst", 0)
+                          wx.setStorageSync("todayselected", [])
+                          wx.setStorageSync("honey_info", {
+                            total_honey: 0,
+                            honeybox_array: []
+                          })
+                          wx.setStorageSync("daily_honey", [0, 0])
+                          wx.setStorageSync("favorinputtext", [])
+                          wx.setStorageSync("have_stadium", 0)
+                          wx.setStorageSync("isfirstcreate", 1)
+                          setTimeout(function () {
+                            _this.onLaunch();
+                          }, 2000);
+                          wx.request({
+                            method: 'POST',
+                            header: {
+                              'content-type': 'application/json'
+                            },
+                            url: _this.globalData.mainURL + 'api/addNewUser',
+                            data: {
+                              nickname: _this.globalData.userInfo.nickname,
+                              avatar: _this.globalData.userInfo.avatar,
+                              open_id: obj.openid
+                              // 'user_code': _this.globalData.user_code
+                              // 'session_key': _this.globalData.session_key
+                            },
+                            success: function (ret) {
+                              // if (ret.data.status) {
+                              //   // var info = ret.data.result;
+                              //   // //_this.globalData.userInfo;
 
-                          //   // _this.globalData.userInfo.name = _this.globalData.userInfo.nickname
-                          //   // _this.globalData.userInfo.user_id = info.user_id;
-                          // }
+                              //   // _this.globalData.userInfo.name = _this.globalData.userInfo.nickname
+                              //   // _this.globalData.userInfo.user_id = info.user_id;
+                              // }
+                              console.log(ret)
+                            }
+                          })
                         }
-                      })
-                    }
-                    else {
-                      console.log(JSON.parse(res.data.result[0].daily_honey))
-                      _this.globalData.honey_info = wx.getStorageSync('honey_info')
-                      wx.setStorageSync("daily_honey", JSON.parse(res.data.result[0].daily_honey))
-                      if(!wx.getStorageSync('todayfirst')){
-                        wx.setStorageSync("todayfirst", res.data.result[0].todayfirst)
-                      }
-                      _this.globalData.daily_honey = JSON.parse(res.data.result[0].daily_honey)
-                      _this.globalData.have_stadium = wx.getStorageSync("have_stadium")
-                      if (_this.globalData.honey_info.honeybox_array == undefined) {
-                        _this.globalData.honey_info = {
-                          total_honey: 0,
-                          honeybox_array: [],
-                        }
-                      }
-                      _this.globalData.honey_info.total_honey = 1 * res.data.result[0].honey
-                      wx.setStorageSync("honey_info", _this.globalData.honey_info)
-                      var info = _this.globalData.userInfo;
-                      if (res.data.result[0].forbidden == 1) {
-                        wx.showModal({
-                          title: '您的账号已被禁用',
-                          showCancel: false,
-                          complete: function () {
-                            wx.navigateBackMiniProgram({
-                            })
-
+                        else {
+                          _this.globalData.honey_info = wx.getStorageSync('honey_info')
+                          wx.setStorageSync("daily_honey", JSON.parse(res.data.result[0].daily_honey))
+                          wx.setStorageSync("todayfirst", res.data.result[0].todayfirst)
+                          _this.globalData.daily_honey = wx.getStorageSync("daily_honey")
+                          _this.globalData.have_stadium = wx.getStorageSync("have_stadium")
+                          if (_this.globalData.honey_info.honeybox_array == undefined) {
+                            _this.globalData.honey_info = {
+                              total_honey: 0,
+                              honeybox_array: [],
+                            }
+                            wx.setStorageSync("honey_info", _this.globalData.honey_info)
                           }
-                        })
+                          _this.globalData.honey_info.total_honey = 1 * res.data.result[0].honey
+                          var info = _this.globalData.userInfo;
+                          if (res.data.result[0].forbidden == 1) {
+                            wx.showModal({
+                              title: '您的账号已被禁用',
+                              showCancel: false,
+                              complete: function () {
+                                wx.navigateBackMiniProgram({
+                                })
+
+                              }
+                            })
+                          }
+                          info.user_id = res.data.result[0].no;
+                          info.phone = res.data.result[0].phone;
+                          info.state = res.data.result[0].state;
+                          info.name = res.data.result[0].name;
+                          info.forbidden = res.data.result[0].forbidden;
+                          info.honey = res.data.result[0].honey;
+                          _this.globalData.honey_info.total_honey = info.honey
+                          wx.setStorageSync('honey_info', _this.globalData.honey_info)
+                          info.role = res.data.result[0].role;
+                          if (info.state * 1 != 2) {
+                            info.name = _this.globalData.userInfo.nickname
+                          }
+                          if (info.avatar == '') {
+                            info.avatar = "/image/user-unlogin.png"
+                          }
+                          if (res.data.member[0].state == null) {
+                            info.isVIP = 0
+                          }
+                          if (res.data.member[0].state == 1) {
+                            info.isVIP = 1;
+                          }
+                          _this.globalData.userInfo = info
+                          var tempdate1 = new Date()
+                          if (tempdate1.getHours() >= 0 && tempdate1.getHours() < 7) {
+                            _this.globalData.isactivetime = 0
+                          }
+                          else {
+                            _this.globalData.isactivetime = 1
+                          }
+                          setInterval(_this.checkDate, 1000)
+                        }
+                      },
+                      fail: function () {
                       }
-                      info.user_id = res.data.result[0].no;
-                      info.phone = res.data.result[0].phone;
-                      info.state = res.data.result[0].state;
-                      info.forbidden = res.data.result[0].forbidden;
-                      info.honey = res.data.result[0].honey;
-                      _this.globalData.honey_info.total_honey = info.honey
-                      wx.setStorageSync('honey_info', _this.globalData.honey_info)
-                      info.role = res.data.result[0].role;
-                      if (info.state * 1 != 2) {
-                        info.name = _this.globalData.userInfo.nickname
-                      }
-                      if (info.avatar == '') {
-                        info.avatar = "/image/user-unlogin.png"
-                      }
-                      if (res.data.member[0].state == null) {
-                        info.isVIP = 0
-                      }
-                      if (res.data.member[0].state == 1) {
-                        info.isVIP = 1;
-                      }
-                      _this.globalData.userInfo = info
-                      var tempdate1 = new Date()
-                      if (tempdate1.getHours() >= 0 && tempdate1.getHours() < 7) {
-                        _this.globalData.isactivetime = 0
-                      }
-                      else {
-                        _this.globalData.isactivetime = 1
-                      }
-                      setInterval(_this.checkDate, 1000)
-                    }
-                  },
-                  fail: function () {
-                  }
-                })
+                    })
               }
             });
           }
@@ -310,19 +309,23 @@ App({
 
   gainNewHoney: function (booking_data) {
     var _this = this
+    console.log(_this.globalData.honey_info.honeybox_array)
     var iter;
     var tempx, tempy
     var honeytype = 1
     var vip = _this.globalData.userInfo.isVIP + 1
+    console.log(vip)
     var daily_honey = wx.getStorageSync("daily_honey")
     if (daily_honey == '') daily_honey = [0, 0];
     _this.globalData.daily_honey = daily_honey
+    console.log(daily_honey[1])
     if (true || _this.globalData.daily_honey[1] <= _this.globalData.rule[6].value) {
       if (booking_data.role == 1) {
         var unit = _this.globalData.rule[0].value * 1;
         var portion = _this.globalData.rule[4].value * 1;
         var honey = unit / (portion + 1) * booking_data.amount;
         honey = Math.floor(honey)
+        console.log(honey)
         if (honey >= (_this.globalData.rule[6].value * vip)) {
           honey = (_this.globalData.rule[5 + honeytype].value * 1)
           _this.globalData.honey_info.honeybox_array = []
@@ -372,6 +375,7 @@ App({
           var portion = _this.globalData.rule[4].value * 1;
           var honey = unit * booking_data.amount / (portion + 1);
           honey = Math.floor(honey)
+          console.log(_this.globalData.honey_info.honeybox_array)
           if (honey >= _this.globalData.rule[6].value * vip) {
             honey = _this.globalData.rule[6].value * vip
             _this.globalData.honey_info.honeybox_array = []
@@ -387,9 +391,12 @@ App({
                 break;
               }
             }
+            console.log(sum)
             if (temparray.length > 0 && iter >= 0) {
               var last = temparray.splice(iter, 1)
               last[0].honey = _this.globalData.rule[6].value * vip - sum
+              console.log('here')
+              console.log(iter)
               temparray.splice(0, iter)
               if (last[0].honey > 0) {
                 temparray.unshift(last[0])

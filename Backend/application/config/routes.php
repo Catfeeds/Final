@@ -140,6 +140,7 @@ $route['api/cancelBooking'] = "api/datamanage/cancelBooking";
 $route['api/addRating'] = "api/datamanage/addRating";
 $route['api/getAllEvents'] = "api/datamanage/getEventByUser";
 $route['api/getEventDetail'] = "api/datamanage/getEventDetail";
+$route['api/addFeedback'] = "api/datamanage/addFeedback";
 $route['api/getBookingDetailByEvent'] = "api/datamanage/getBookingDetailByEvent";
 $route['api/cancelEvent'] = "api/datamanage/cancelEvent";
 $route['api/getEventsByProvince'] = "api/datamanage/getEventByProvince";
@@ -196,7 +197,7 @@ $route['api/setExchange'] = "api/datamanage/setExchange";
 $route['api/getExchange'] = "api/datamanage/getExchange";
 $route['api/getExchangeDetail'] = "api/datamanage/getExchangeDetail";
 $route['api/endExchange'] = "api/datamanage/endExchange";
-
+$route['api/haveStadium'] = "api/datamanage/haveStadium";
 $route['api/getItemsOnMap'] = "api/datamanage/getItemsOnMap";
 $route['api/catchHoney'] = "api/datamanage/catchHoney";
 
@@ -208,6 +209,7 @@ $route['api/getNewBookingAlarm'] = "api/datamanage/getNewBookingAlarm";
 $route['api/getNewAlarm'] = "api/datamanage/getNewAlarm";
 $route['api/getAlarm'] = "api/datamanage/getAlarm";
 $route['api/getAllBoss'] = "api/datamanage/getAllBoss";
+$route['api/getBackyard'] = "api/datamanage/getBackyard";
 
 $route['api/test'] = "api/datamanage/test";
 /* End of file routes.php */

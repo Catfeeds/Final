@@ -40,8 +40,6 @@ Page({
       })
       return;
     }
-    console.log(id)
-    console.log(app.globalData.userInfo.user_id)
     wx.request({
       url: app.globalData.mainURL + 'api/getEventDetail',
       method: 'POST',

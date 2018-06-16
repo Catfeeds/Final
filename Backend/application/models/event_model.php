@@ -350,8 +350,7 @@ class event_model extends CI_Model
    * cos( radians(event.longitude) - radians($longitude)) + sin(radians($latitude)) 
    * sin( radians(event.latitude))))<=10");
         $this->db->where("event.publicity", 1);
-        $this->db->where("TIME_TO_SEC(TIMEDIFF(now(), event.end_time))<86400");
-        $this->db->where_in("event.state", array(0,1));
+        $this->db->where("event.state", 0);
         $query = $this->db->get();
         return $query->result();
     }
